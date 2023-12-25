@@ -1,6 +1,6 @@
-baseURL = "https://jnthorp.github.io/lab-preview/"
+baseURL = "https://jnthorp.github.io/johnspicks/"
 languageCode = "en-us"
-title = "CU Psychology Research Opportunities"
+title = "John's Picks"
 theme = "minimal-bootstrap-hugo-theme"
 relativeURLs = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
@@ -13,7 +13,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\
 
 
 [params]
-  description = "CU Psychology Research Opportunities"
+  description = "John's Picks"
   customDateFormat = "Jan 2, 2006"
   customCodeStyle = true
   customBlockquoteStyle = true
