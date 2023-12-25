@@ -10,7 +10,7 @@ library(lubridate)
 library(gt)
 date <- Sys.Date()
 make_hyperlink = function(myurl,mytext) {
-  paste('<a href=',myurl,'>',mytext,'</a>')
+  paste('<a href=',myurl,' target="_blank">',mytext,'</a>')
 }
 ```
 
