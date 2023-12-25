@@ -1,0 +1,77 @@
+---
+title: "CU Psychology Research Opportunities"
+---
+
+```{r setup, include=FALSE}
+library(kableExtra)
+options(kableExtra.html.bsTable = TRUE)
+library(tidyverse)
+library(lubridate)
+library(gt)
+date <- Sys.Date()
+make_hyperlink = function(myurl,mytext=myurl) {
+  paste('<a href=',myurl,'>',mytext,'</a>')
+}
+```
+
+```{css, echo = FALSE}
+.video-box {
+  position: relative;
+  overflow: hidden;
+  width: 100%
+}
+/*  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+# Welcome to johnspicks!
+
+## Today's Date
+
+## Background
+
+John has been going to a lot of shows alone. 
+
+There's nothing wrong with that. 
+
+In fact, it's so easy - and he's so into it - he's having trouble not doing it. 
+
+This website is an effort towards making his evening plans openly available to those he would love any opportunity to see. 
+
+## Picks
+
+```{r, echo = F, warning=FALSE}
+options(kableExtra.html.bsTable = TRUE)
+picks <- read.csv('../static/picks.csv')
+locations <- read.csv('../static/locations.csv')
+picks <- merge.data.frame(picks, locations)
+
+picks %>%
+  # mutate(Embedding = paste0("<div class=\"video-box\">
+  #                                    <iframe class=\"responsive-iframe\"
+  #                                    src=",Embedding,">
+  #                                    </iframe></div>"),
+  mutate("Event_Embedding" = map(Event_Embedding, gt::html)) %>%
+  rename("Add Event" = Event_Embedding) %>%
+  gt() %>%
+  fmt(
+    columns = c('Location_Embedding','Location'),
+    fns = make_hyperlink) %>%
+  fmt(
+    columns = c('Ticket_Embedding','Seat'),
+    fns = make_hyperlink) %>%
+  cols_hide(c(Location_Embedding, Ticket_Embedding))
+
+                   
+                   
+```
