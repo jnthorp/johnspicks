@@ -9,7 +9,7 @@ library(tidyverse)
 library(lubridate)
 library(gt)
 date <- Sys.Date()
-make_hyperlink = function(myurl,mytext=myurl) {
+make_hyperlink = function(myurl,mytext) {
   paste('<a href=',myurl,'>',mytext,'</a>')
 }
 ```
@@ -63,13 +63,12 @@ picks %>%
   #                                    </iframe></div>"),
   mutate("Event_Embedding" = map(Event_Embedding, gt::html)) %>%
   rename("Add Event" = Event_Embedding) %>%
+  mutate(Location = make_hyperlink(Location_Embedding, Location),
+         Seat = make_hyperlink(Ticket_Embedding, Seat)) %>%
   gt() %>%
-  fmt(
-    columns = c('Location_Embedding','Location'),
-    fns = make_hyperlink) %>%
-  fmt(
-    columns = c('Ticket_Embedding','Seat'),
-    fns = make_hyperlink) %>%
+  fmt (
+    columns = c('Location','Seat'),
+    fns = function(x) sapply(x, htmltools::HTML)) %>%
   cols_hide(c(Location_Embedding, Ticket_Embedding))
                    
 ```
