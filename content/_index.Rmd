@@ -1,5 +1,5 @@
 ---
-title: "CU Psychology Research Opportunities"
+title: "John's Picks"
 ---
 
 ```{r setup, include=FALSE}
@@ -34,9 +34,7 @@ make_hyperlink = function(myurl,mytext=myurl) {
 }
 ```
 
-# Welcome to johnspicks!
-
-## Today's Date
+# Welcome to John's Picks!
 
 ## Background
 
@@ -47,6 +45,8 @@ There's nothing wrong with that.
 In fact, it's so easy - and he's so into it - he's having trouble not doing it. 
 
 This website is an effort towards making his evening plans openly available to those he would love any opportunity to see. 
+
+The link under Seat links to the ticket page, and if you would like to join my Google Calendar event you can click the button to its right.
 
 ## Picks
 
@@ -71,7 +71,5 @@ picks %>%
     columns = c('Ticket_Embedding','Seat'),
     fns = make_hyperlink) %>%
   cols_hide(c(Location_Embedding, Ticket_Embedding))
-
-                   
                    
 ```
