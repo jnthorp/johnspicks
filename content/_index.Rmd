@@ -33,7 +33,7 @@ make_hyperlink = function(myurl,mytext) {
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 100%;
+  height: 100%
 }
 ```
 
@@ -57,7 +57,10 @@ The link under Seat links to the ticket page, and if you would like to join my G
 options(kableExtra.html.bsTable = TRUE)
 picks <- read.csv('../static/picks.csv')
 locations <- read.csv('../static/locations.csv')
-picks <- merge.data.frame(picks, locations)
+picks <- merge.data.frame(picks, locations) %>%
+  mutate(Date = str_replace_all(Date, '/', '-'),
+         Date = as.Date(Date)) %>%
+  arrange(rev(desc(Date)), rev(desc(Time)))
 
 picks %>%
   mutate(Maps_Embedding = paste0("<div class=\"video-box\">
