@@ -41,26 +41,27 @@ make_hyperlink = function(myurl,mytext) {
 
 ## Background
 
-John has been going to a lot of shows alone. 
+This website is an effort in making John's evening plans openly available to those he would welcome any opportunity to see. If you are seeing this, you are a person John would be happy to see in most any context, and particularly for any plans he has listed here.
 
-There's nothing wrong with that. 
+The text under the Seat column links to the ticket page, the code is:
 
-In fact, it's so easy - and he's so into it - he's having trouble not doing it. 
+- **GA** : I have bought a ticket and it's general admission
+- **Not yet** : I have not bought a ticket yet
+- **Seat number** : I have bought a ticket and it has the given seat number
+- **Door** : You can only pay at the door 
+- **Door (cash)** : You can only pay at the door in cash
 
-This website is an effort towards making his evening plans openly available to those he would love any opportunity to see. 
-
-The link under Seat links to the ticket page, and if you would like to join my Google Calendar event you can click the button to its right.
+and if you would like to join the Google Calendar event you can click the button under each row
 
 ## Picks
 
 ```{r, echo = F, warning=FALSE}
 options(kableExtra.html.bsTable = TRUE)
-picks <- read.csv('../static/picks.csv')
+picks <- readxl::read_xlsx('../static/picks.xlsx')
 locations <- read.csv('../static/locations.csv')
-picks <- merge.data.frame(picks, locations) %>%
-  mutate(Date = str_replace_all(Date, '/', '-'),
-         Date = as.Date(Date)) %>%
-  arrange(rev(desc(Date)), rev(desc(Time)))
+picks <- merge.data.frame(picks, locations, all.x = T) %>%
+  mutate(Time = format(Time, "%H:%M")) %>%
+  arrange(Date, Time)
 
 picks %>%
   mutate(Maps_Embedding = paste0("<div class=\"video-box\">
