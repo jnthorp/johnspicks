@@ -81,6 +81,7 @@ picks %>%
     fns = function(x) sapply(x, htmltools::HTML)) %>%
   cols_hide(c(Location_Embedding, Ticket_Embedding, Location)) %>%
   cols_width("Add Event" ~ px(100),
+             When ~ px(45),
              Description ~ px(200)) %>%
   opt_stylize(style = 3)
                    
