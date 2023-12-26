@@ -82,6 +82,7 @@ picks %>%
   cols_hide(c(Location_Embedding, Ticket_Embedding, Location)) %>%
   cols_width("Add Event" ~ px(200),
              Description ~ px(400)) %>%
-  opt_stylize(style = 3)
+  opt_stylize(style = 3) %>%
+  opt_interactive(use_highlight = T)
                    
 ```
