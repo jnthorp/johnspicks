@@ -70,12 +70,14 @@ picks %>%
          "Map" = Maps_Embedding) %>%
   mutate(Location = make_hyperlink(Location_Embedding, Location),
          Seat = make_hyperlink(Ticket_Embedding, Seat)) %>%
+  unite("When", c("Date", "Time"), sep = " ") %>%
   gt() %>%
   fmt (
     columns = c('Location','Seat'),
     fns = function(x) sapply(x, htmltools::HTML)) %>%
-  cols_hide(c(Location_Embedding, Ticket_Embedding)) %>%
-  cols_width("Add Event" ~ px(200)) %>%
+  cols_hide(c(Location_Embedding, Ticket_Embedding, Location)) %>%
+  cols_width("Add Event" ~ px(200),
+             Description ~ px(400)) %>%
   opt_stylize(style = 3)
                    
 ```
