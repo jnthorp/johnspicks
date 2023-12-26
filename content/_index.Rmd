@@ -57,18 +57,21 @@ locations <- read.csv('../static/locations.csv')
 picks <- merge.data.frame(picks, locations)
 
 picks %>%
-  # mutate(Embedding = paste0("<div class=\"video-box\">
-  #                                    <iframe class=\"responsive-iframe\"
-  #                                    src=",Embedding,">
-  #                                    </iframe></div>"),
-  mutate("Event_Embedding" = map(Event_Embedding, gt::html)) %>%
-  rename("Add Event" = Event_Embedding) %>%
+  mutate(Maps_Embedding = paste0("<div class=\"video-box\">
+                                     <iframe class=\"responsive-iframe\"
+                                     src=",Maps_Embedding,">
+                                     </iframe></div>"),
+  Event_Embedding = map(Event_Embedding, gt::html),
+  Maps_Embedding = map(Maps_Embedding, gt::html)) %>%
+  rename("Add Event" = Event_Embedding,
+         "Map" = Maps_Embedding) %>%
   mutate(Location = make_hyperlink(Location_Embedding, Location),
          Seat = make_hyperlink(Ticket_Embedding, Seat)) %>%
   gt() %>%
   fmt (
     columns = c('Location','Seat'),
     fns = function(x) sapply(x, htmltools::HTML)) %>%
-  cols_hide(c(Location_Embedding, Ticket_Embedding))
+  cols_hide(c(Location_Embedding, Ticket_Embedding)) %>%
+  opt_stylize(style = 3)
                    
 ```
