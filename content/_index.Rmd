@@ -76,7 +76,6 @@ picks %>%
          Seat = make_hyperlink(Ticket_Embedding, Seat)) %>%
   unite("When", c("Date", "Time"), sep = " ") %>%
   gt() %>%
-  opt_interactive(use_highlight = T) %>%
   fmt (
     columns = c('Location','Seat'),
     fns = function(x) sapply(x, htmltools::HTML)) %>%
