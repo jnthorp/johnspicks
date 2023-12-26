@@ -10,7 +10,7 @@ library(lubridate)
 library(gt)
 date <- Sys.Date()
 make_hyperlink = function(myurl,mytext) {
-  paste('<a href=',myurl,' target="_blank">',mytext,'</a>')
+  paste('<a href=', myurl,' target="_blank">',mytext,'</a>')
 }
 ```
 
@@ -76,13 +76,13 @@ picks %>%
          Seat = make_hyperlink(Ticket_Embedding, Seat)) %>%
   unite("When", c("Date", "Time"), sep = " ") %>%
   gt() %>%
+  opt_interactive(use_highlight = T) %>%
   fmt (
     columns = c('Location','Seat'),
     fns = function(x) sapply(x, htmltools::HTML)) %>%
   cols_hide(c(Location_Embedding, Ticket_Embedding, Location)) %>%
-  cols_width("Add Event" ~ px(200),
-             Description ~ px(400)) %>%
-  opt_stylize(style = 3) %>%
-  opt_interactive(use_highlight = T)
+  cols_width("Add Event" ~ px(100),
+             Description ~ px(200)) %>%
+  opt_stylize(style = 3)
                    
 ```
