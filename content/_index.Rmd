@@ -20,7 +20,7 @@ make_hyperlink = function(myurl,mytext) {
   overflow: hidden;
   height: 100%;
   min-height: 200px;
-  min-width: 200px;
+  min-width: 100px;
   width: 100%
 }
 /*  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
@@ -75,6 +75,7 @@ picks %>%
     columns = c('Location','Seat'),
     fns = function(x) sapply(x, htmltools::HTML)) %>%
   cols_hide(c(Location_Embedding, Ticket_Embedding)) %>%
+  cols_width("Add Event" ~ px(200)) %>%
   opt_stylize(style = 3)
                    
 ```
