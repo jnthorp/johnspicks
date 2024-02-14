@@ -50,6 +50,7 @@ The text under the Seat column links to the ticket page, the code is:
 - **Seat number** : I have bought a ticket and it has the given seat number
 - **Door** : You can only pay at the door 
 - **Door (cash)** : You can only pay at the door in cash
+- **Standby only**: You missed your chance bozo
 
 and if you would like to join the Google Calendar event you can click the button under each row
 
