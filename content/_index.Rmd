@@ -85,4 +85,5 @@ picks %>%
              When ~ px(45),
              Description ~ px(200)) %>%
   opt_stylize(style = 3)
+
 ```
